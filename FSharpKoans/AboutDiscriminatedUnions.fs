@@ -19,7 +19,7 @@ type Favorite =
 // of them like a much more powerful version of enums in other
 // languages.
 //---------------------------------------------------------------
-[<Koan(Sort = 18)>]
+[<Koan(Sort = 18)>]    
 module ``about discriminated unions`` =
     [<Koan>]
     let DiscriminatedUnionsCaptureASetOfOptions() =
@@ -33,7 +33,7 @@ module ``about discriminated unions`` =
 
         let choice = Mustard
 
-        AssertEquality (toColor choice) __
+        AssertEquality (toColor choice) "yellow"
 
         (* TRY IT: What happens if you remove a case from the above pattern 
                    match? *)
@@ -51,5 +51,5 @@ module ``about discriminated unions`` =
         let bourbonResult = saySomethingAboutYourFavorite <| Bourbon "Maker's Mark"
         let numberResult = saySomethingAboutYourFavorite <| Number 7
         
-        AssertEquality bourbonResult __
-        AssertEquality numberResult __
+        AssertEquality bourbonResult "I prefer Bookers to Maker's Mark"
+        AssertEquality numberResult "me too!"

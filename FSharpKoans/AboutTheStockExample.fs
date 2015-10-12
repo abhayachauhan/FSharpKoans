@@ -1,5 +1,6 @@
 ﻿namespace FSharpKoans
 open FSharpKoans.Core
+open System
 
 //---------------------------------------------------------------
 // Apply Your Knowledge!
@@ -58,8 +59,27 @@ module ``about the stock example`` =
     // tests for yourself along the way. You can also try 
     // using the F# Interactive window to check your progress.
 
+    let split (x:string) =
+            x.Split([|','|])
+//    [<Koan>]
+//    let DataMods() =
+//        let data = stockData
+//                    |> Seq.skip 1
+//                    |> Seq.map split
+//                    |> Seq.head
+//
+//        //let difference = Double.Parse(data.[1], Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture) - Double.Parse(data.[4], Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture)
+//
+//        //AssertEquality (abs(difference)) 0.14
+    
     [<Koan>]
     let YouGotTheAnswerCorrect() =
-        let result =  __
+
+        let variance = stockData 
+                        |> Seq.skip 1
+                        |> Seq.map split
+                        |> Seq.maxBy (fun x -> abs(Double.Parse(x.[1]) - Double.Parse(x.[4])))
+
+        let result =  variance.[0]
         
         AssertEquality "2012-03-13" result
